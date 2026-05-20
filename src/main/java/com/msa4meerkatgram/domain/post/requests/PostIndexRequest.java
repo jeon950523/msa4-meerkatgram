@@ -10,7 +10,7 @@ public record PostIndexRequest(
     Integer limit
 ) {
     public PostIndexRequest(Integer page, Integer limit){
-        this.page = (page !=null && page < 0) ? page : 1;
-        this.limit = (limit !=null && limit < 0) ? limit : 6;
+        this.page = (page !=null && page > 0) ? page : 1;
+        this.limit = (limit !=null && limit > 0) ? limit : 6;
     }
 }
