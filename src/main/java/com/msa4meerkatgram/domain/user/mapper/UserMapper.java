@@ -8,4 +8,6 @@ public interface UserMapper {
     User findByPk(long id);
     
     User findByEmail(String email);
+    
+    
 }
