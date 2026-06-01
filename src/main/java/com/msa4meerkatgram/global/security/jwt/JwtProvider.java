@@ -54,6 +54,23 @@ public class JwtProvider {
         return cookieManager.getCookie(request, jwtConfig.refreshTokenCookieName())
             .map(Cookie::getValue);
     }
+
+    /**
+     * 해더에서 배어러토큰(엑세스토큰) 추출, 예: Authorization Bearer 15asdasdf.adsfag15ga.15151gag
+     * @param request 리퀘스트
+     * @return Optional 액세스 토큰
+     */
+    public Optional<String> extractAccessToken(HttpServletRequest request){
+        String bearerToken = request.getHeader(jwtConfig.headerKey());
+        
+        if (bearerToken == null || !bearerToken.startsWith(jwtConfig.scheme())){
+            return Optional.empty();
+        }
+        
+        return Optional.of(bearerToken.substring(jwtConfig.scheme().length()).trim());
+        
+        
+    }
     
     // 토큰 검증 및 클레임 추출
     public Claims extractClaims(String token){
