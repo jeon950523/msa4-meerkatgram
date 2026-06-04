@@ -8,6 +8,22 @@
        set refresh_token = #{refreshToken}, updated_at = now()
        where id = #{id}
    </update>
-   
+   <insert id="created" parameterType="com.msa4meerkatgram.domain.user.entities.User" useGeneratedKeys="true" keyProperty="id">
+    insert into users(
+        email, 
+        password, 
+        nick,
+        role,
+        provider,
+        profile) 
+    values(
+       #{email},
+        #{password},
+        #{nick},
+        #{role},
+       #{provider},
+       #{profile}
+          )
+   </insert>
    
 </mapper>

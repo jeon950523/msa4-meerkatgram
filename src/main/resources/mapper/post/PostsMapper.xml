@@ -32,4 +32,14 @@
             deleted_at IS null
 
     </select>
+    <select id="findByPk" resultMap="postsResultMap">
+    select
+        *
+    from posts
+    where
+        deleted_at is null
+        and id = #{id}
+
+
+    </select>
 </mapper>
