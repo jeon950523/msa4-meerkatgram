@@ -30,7 +30,6 @@
         from posts
         where
             deleted_at IS null
-
     </select>
     <select id="findByPk" resultMap="postsResultMap">
     select
@@ -39,7 +38,10 @@
     where
         deleted_at is null
         and id = #{id}
-
-
+    </select>
+    <select id="countPostsByUserId" resultType="long">
+        select count(*)
+        from posts
+        where deleted_at is null and user_id = #{userId}
     </select>
 </mapper>
